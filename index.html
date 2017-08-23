@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Gomoku</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous"> 
+    <style>
+    	.table td {
+    		padding: 0rem;
+    		border: 1px solid #808080;   
+    		width: 33px !important;
+    		height: 33px !important; 		
+    		text-align: center;
+    		vertical-align: middle;
+    	}    
+    </style>   
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 text-center" style="margin-top: 30px; padding-bottom: 20px;">
+				<h2>Play Gomoku</h2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4" id="playernameinput" style="margin: auto;">
+				<form>
+				  <div class="form-group">
+				    <label for="name">Player 1's Name:</label>
+				    <input type="text" class="form-control" id="namePlayerOne">
+				  </div>
+				  <div class="form-group">
+				    <label for="name">Player 2's Name:</label>
+				    <input type="text" class="form-control" id="namePlayerTwo">
+				  </div>	
+				  <div style="text-align: center;">		  
+				  	<button type="submit" class="text-center btn btn-success" id="playerSubmitButton">Submit</button>
+				  </div>	
+				</form>
+			</div>
+			<div id="board" style="margin:auto; display:none;">
+				<div class="text-center" id="currentPlayerDisplay" style="margin-bottom: 20px;">
+				</div>
+				<table class="table table-bordered">
+					<tbody>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>							
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>							
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>							
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>							
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>							
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>							
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>							
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>							
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>							
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>							
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>							
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>							
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>							
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>							
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>							
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>							
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>							
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>							
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>							
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>	
+	<script>
+		var playerOneName, playerTwoName, playerOne, playerTwo;
+		var currentPlayer, currentPlayerDisplay;
+
+		document.getElementById("playerSubmitButton").addEventListener("click", function(event){playerOneName = document.getElementById("namePlayerOne").value;			
+	    	playerTwoName = document.getElementById("namePlayerTwo").value;
+	    	if (playerOneName===''||playerTwoName===''){
+	    		alert("You must submit name for both players.");
+	    	} else {
+	    		document.getElementById("playernameinput").style.display = "none";
+	    		document.getElementById("board").style.display = "block";	    		
+	    		playerOne = {symbol: 'O', name: playerOneName};
+				playerTwo = {symbol: 'X', name: playerTwoName};
+				currentPlayer = playerOne;	
+				currentPlayerDisplay = document.getElementById("currentPlayerDisplay");
+				displayCurrentPlayer();					
+	    	}
+	    	event.preventDefault();
+		});		
+
+		var table = document.getElementsByClassName("table")[0];
+		if (table != null) {
+		    for (var i = 0; i < 19; i++) {
+		        for (var j = 0; j < 19; j++)
+		        table.rows[i].cells[j].onclick = function () {
+		            tableText(this);		            
+		            if (checkGame()){
+            			for (var i = 0; i < 19; i++) {
+		        			for (var j = 0; j < 19; j++){
+		        				table.rows[i].cells[j].onclick = '';
+		        			}
+		        		}
+		            }
+	            	else {
+			            if (currentPlayer == playerOne) {
+			            	currentPlayer = playerTwo;
+			            } else {
+			            	currentPlayer = playerOne;
+			            } 
+			            displayCurrentPlayer();
+		        	}
+		        };
+		    }
+		}
+
+		function tableText(tableCell) {
+		    tableCell.innerHTML = currentPlayer.symbol;
+		}	
+
+		function displayCurrentPlayer(){
+			currentPlayerDisplay.textContent = currentPlayer.name+"'s turn";
+		} 
+
+		function checkGame(){
+			//Check for horizontal win condition
+		    for (var i = 0; i < 19; i++) {
+		        for (var j = 0; j < 15; j++) {		        	
+		        	if (table.rows[i].cells[j].innerHTML===currentPlayer.symbol){
+		        		if ((table.rows[i].cells[j].innerHTML === table.rows[i].cells[j+1].innerHTML) && (table.rows[i].cells[j].innerHTML === table.rows[i].cells[j+2].innerHTML) && (table.rows[i].cells[j].innerHTML === table.rows[i].cells[j+3].innerHTML) && (table.rows[i].cells[j].innerHTML === table.rows[i].cells[j+4].innerHTML)){
+		        			displayWinMessage();
+		        			return true;		    				
+		    			}
+		        	}		    		
+		        }
+		    }
+		    //Check for vertical win condition
+		    for (var i = 0; i < 15; i++) {
+		        for (var j = 0; j < 19; j++) {		        	
+		        	if (table.rows[i].cells[j].innerHTML===currentPlayer.symbol){
+		        		if ((table.rows[i].cells[j].innerHTML === table.rows[i+1].cells[j].innerHTML) && (table.rows[i].cells[j].innerHTML === table.rows[i+2].cells[j].innerHTML) && (table.rows[i].cells[j].innerHTML === table.rows[i+3].cells[j].innerHTML) && (table.rows[i].cells[j].innerHTML === table.rows[i+4].cells[j].innerHTML)){
+		    				displayWinMessage();
+		    				return true;
+		    			}
+		        	}		    		
+		        }
+		    }
+	       //Check for diagonal win condition
+		    for (var i = 0; i < 15; i++) {
+		        for (var j = 0; j < 15; j++) {		        	
+		        	if (table.rows[i].cells[j].innerHTML===currentPlayer.symbol){
+		        		if ((table.rows[i].cells[j].innerHTML === table.rows[i+1].cells[j+1].innerHTML) && (table.rows[i].cells[j].innerHTML === table.rows[i+2].cells[j+2].innerHTML) && (table.rows[i].cells[j].innerHTML === table.rows[i+3].cells[j+3].innerHTML) && (table.rows[i].cells[j].innerHTML === table.rows[i+4].cells[j+4].innerHTML)){
+		    				displayWinMessage(); 
+		    				return true;
+		    			}
+		        	}		    		
+		        }
+		    }
+		}
+
+		function displayWinMessage(){
+			currentPlayerDisplay.textContent = "Congratulations, " + currentPlayer.name + " won the game";
+		}
+	</script>
+</body>
+</html>
