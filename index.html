@@ -473,7 +473,8 @@
 		    for (var i = 0; i < 19; i++) {
 		        for (var j = 0; j < 19; j++)
 		        table.rows[i].cells[j].onclick = function () {
-		            tableText(this);		            
+		            var freeCell = this.innerHTML==''; //check if the cell is free(unoccupied)
+		            if (freeCell)tableText(this);		            
 		            if (checkGame()){
             			for (var i = 0; i < 19; i++) {
 		        			for (var j = 0; j < 19; j++){
@@ -481,7 +482,7 @@
 		        			}
 		        		}
 		            }
-	            	else {
+	            	else if (freeCell){
 			            if (currentPlayer == playerOne) {
 			            	currentPlayer = playerTwo;
 			            } else {
