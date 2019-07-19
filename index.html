@@ -141,7 +141,7 @@
 		        	}		    		
 		        }
 		    }
-	       //Check for diagonal win condition
+	        //Check for right diagonal win condition
 		    for (var i = 0; i < 15; i++) {
 		        for (var j = 0; j < 15; j++) {		        	
 		        	if (table.rows[i].cells[j].innerHTML===currentPlayer.symbol){
@@ -152,6 +152,17 @@
 		        	}		    		
 		        }
 		    }
+            //Check for left diagonal win condition
+            for (var i = 4; i < 19; i++) {
+                for (var j = 0; j < 15; j++) {
+                    if (table.rows[i].cells[j].innerHTML===currentPlayer.symbol){
+                        if ((table.rows[i].cells[j].innerHTML === table.rows[i-1].cells[j+1].innerHTML) && (table.rows[i].cells[j].innerHTML === table.rows[i-2].cells[j+2].innerHTML) && (table.rows[i].cells[j].innerHTML === table.rows[i-3].cells[j+3].innerHTML) && (table.rows[i].cells[j].innerHTML === table.rows[i-4].cells[j+4].innerHTML)){
+                            displayWinMessage();
+                            return true;
+                        }
+                    }
+                }
+            }
 		}
 
 		function displayWinMessage(){
