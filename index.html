@@ -4,7 +4,7 @@
 	<title>Gomoku</title>
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">    
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous"> 
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous"> -->
     <style>
     	.table td {
     		padding: 0rem;
@@ -122,8 +122,8 @@
 			//Check for horizontal win condition
 		    for (var i = 0; i < 19; i++) {
 		        for (var j = 0; j < 15; j++) {		        	
-		        	if (table.rows[i].cells[j].innerHTML===currentPlayer.symbol){
-		        		if ((table.rows[i].cells[j].innerHTML === table.rows[i].cells[j+1].innerHTML) && (table.rows[i].cells[j].innerHTML === table.rows[i].cells[j+2].innerHTML) && (table.rows[i].cells[j].innerHTML === table.rows[i].cells[j+3].innerHTML) && (table.rows[i].cells[j].innerHTML === table.rows[i].cells[j+4].innerHTML)){
+		        	if (table.rows[i].cells[j].innerHTML === currentPlayer.symbol){
+		        		if ((table.rows[i].cells[j+1].innerHTML === currentPlayer.symbol) && (table.rows[i].cells[j+2].innerHTML === currentPlayer.symbol) && (table.rows[i].cells[j+3].innerHTML === currentPlayer.symbol) && (table.rows[i].cells[j+4].innerHTML === currentPlayer.symbol)){
 		        			displayWinMessage();
 		        			return true;		    				
 		    			}
@@ -133,8 +133,8 @@
 		    //Check for vertical win condition
 		    for (var i = 0; i < 15; i++) {
 		        for (var j = 0; j < 19; j++) {		        	
-		        	if (table.rows[i].cells[j].innerHTML===currentPlayer.symbol){
-		        		if ((table.rows[i].cells[j].innerHTML === table.rows[i+1].cells[j].innerHTML) && (table.rows[i].cells[j].innerHTML === table.rows[i+2].cells[j].innerHTML) && (table.rows[i].cells[j].innerHTML === table.rows[i+3].cells[j].innerHTML) && (table.rows[i].cells[j].innerHTML === table.rows[i+4].cells[j].innerHTML)){
+		        	if (table.rows[i].cells[j].innerHTML === currentPlayer.symbol){
+		        		if ((table.rows[i+1].cells[j].innerHTML === currentPlayer.symbol) && (table.rows[i+2].cells[j].innerHTML === currentPlayer.symbol) && (table.rows[i+3].cells[j].innerHTML === currentPlayer.symbol) && (table.rows[i+4].cells[j].innerHTML === currentPlayer.symbol)){
 		    				displayWinMessage();
 		    				return true;
 		    			}
@@ -145,7 +145,7 @@
 		    for (var i = 0; i < 15; i++) {
 		        for (var j = 0; j < 15; j++) {		        	
 		        	if (table.rows[i].cells[j].innerHTML===currentPlayer.symbol){
-		        		if ((table.rows[i].cells[j].innerHTML === table.rows[i+1].cells[j+1].innerHTML) && (table.rows[i].cells[j].innerHTML === table.rows[i+2].cells[j+2].innerHTML) && (table.rows[i].cells[j].innerHTML === table.rows[i+3].cells[j+3].innerHTML) && (table.rows[i].cells[j].innerHTML === table.rows[i+4].cells[j+4].innerHTML)){
+		        		if ((table.rows[i+1].cells[j+1].innerHTML === currentPlayer.symbol) && (table.rows[i+2].cells[j+2].innerHTML === currentPlayer.symbol) && (table.rows[i+3].cells[j+3].innerHTML === currentPlayer.symbol) && (table.rows[i+4].cells[j+4].innerHTML === currentPlayer.symbol)){
 		    				displayWinMessage(); 
 		    				return true;
 		    			}
@@ -156,7 +156,7 @@
             for (var i = 4; i < 19; i++) {
                 for (var j = 0; j < 15; j++) {
                     if (table.rows[i].cells[j].innerHTML===currentPlayer.symbol){
-                        if ((table.rows[i].cells[j].innerHTML === table.rows[i-1].cells[j+1].innerHTML) && (table.rows[i].cells[j].innerHTML === table.rows[i-2].cells[j+2].innerHTML) && (table.rows[i].cells[j].innerHTML === table.rows[i-3].cells[j+3].innerHTML) && (table.rows[i].cells[j].innerHTML === table.rows[i-4].cells[j+4].innerHTML)){
+                        if ((table.rows[i-1].cells[j+1].innerHTML === currentPlayer.symbol) && (table.rows[i-2].cells[j+2].innerHTML === currentPlayer.symbol) && (table.rows[i-3].cells[j+3].innerHTML === currentPlayer.symbol) && (table.rows[i-4].cells[j+4].innerHTML === currentPlayer.symbol)){
                             displayWinMessage();
                             return true;
                         }
